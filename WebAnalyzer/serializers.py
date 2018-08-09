@@ -2,25 +2,11 @@ from rest_framework import serializers
 from WebAnalyzer.models import *
 
 
-class ResultPositionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = ResultPositionModel
-        fields = ('x', 'y', 'w', 'h')
-
-
-class ResultLabelSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = ResultLabelModel
-        fields = ('description', 'score')
-
-
 class ResultSerializer(serializers.HyperlinkedModelSerializer):
-    position = ResultPositionSerializer(read_only=True)
-    label = ResultLabelSerializer(many=True, read_only=True)
-
     class Meta:
         model = ResultModel
-        fields = ('position', 'label')
+        fields = ('layer', 'feature')
+        read_only_fields = ('layer', 'feature')
 
 
 class ImageSerializer(serializers.HyperlinkedModelSerializer):
