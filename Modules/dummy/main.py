@@ -18,7 +18,7 @@ class Dummy:
         #   - Inference using image path
         import time
         time.sleep(2)
-        result = [{'CONV': b"TEST", 'FC': b"DEBUG"}, {'CONV': b"TEST", 'FC': b"DEBUG"}]
+        result = [{'CONV': str(b"TEST"), 'FC': str(b"DEBUG")}, {'CONV': str(b"TEST"), 'FC': str(b"DEBUG")}]
         self.result = result
 
         return self.result

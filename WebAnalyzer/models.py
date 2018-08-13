@@ -28,4 +28,5 @@ class ImageModel(models.Model):
 class ResultModel(models.Model):
     result_model = models.ForeignKey(ImageModel, related_name='result', on_delete=models.CASCADE)
     layer = models.TextField(null=True, unique=False)
-    feature = models.BinaryField(null=True, unique=False, editable=True)
+    feature = models.TextField(null=True, unique=False)
+    # feature = models.BinaryField(null=True, unique=False, editable=True)
