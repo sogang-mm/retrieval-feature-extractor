@@ -21,12 +21,12 @@ class ImageModel(models.Model):
         task_get = ast.literal_eval(str(analyzer_by_path.delay(self.image.path).get()))
         for result in task_get:
             for item in result.items():
-                self.result.create(layer=item[0], feature=item[1])
+                self.result.create(descriptor=item[0], feature=item[1])
         super(ImageModel, self).save()
 
 
 class ResultModel(models.Model):
     result_model = models.ForeignKey(ImageModel, related_name='result', on_delete=models.CASCADE)
-    layer = models.TextField(null=True, unique=False)
+    descriptor = models.TextField(null=True, unique=False)
     feature = models.TextField(null=True, unique=False)
     # feature = models.BinaryField(null=True, unique=False, editable=True)
